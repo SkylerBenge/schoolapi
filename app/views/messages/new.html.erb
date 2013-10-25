@@ -2,7 +2,8 @@
 <div class="row">
 	<div class="col-xs-4" id="newmessage">
 		<h3>New Message for <%= @schoolname %></h3>
-
+		<!-- Form with drop down of avilable themes for the message and text area for the message -->
+		<!-- Passing schoolid, zip, and schoolname so they can go into model -->
 		<form method="get" action="/messages/create/<%= @schoolid %>/<%= @zip %>/<%= @schoolname %>">
 			Please select a theme: <select name="theme" class="form-control">
 				<option value="Classroom">Classroom Related</option>
@@ -13,7 +14,10 @@
 			<textarea rows="10" cols="50" name="message" class="form-control" placeholder="Enter message here"></textarea><br>
 			<button class="btn btn-primary btn-block">Submit</button>
 		</form><br>
-
 		<input type="button" class="btn btn-default btn-block" value="Back" onclick="goBack()">
-	<div>
+	</div>
+	<div class="col-xs-4" id="midfiller">
+	</div>
+	<div class="col-xs-4" id="rightfiller">
+	</div>
 </div>

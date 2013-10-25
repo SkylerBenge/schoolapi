@@ -1,24 +1,29 @@
 <div class="row">
-	<div class="col-xs-4" id="searchresult">
+	<div class="col-xs-3" id="searchresult">
 		<h2>Schools in <%= @search %></h2>
+		<!-- Loop that runs through all of the schools that were returned from calling the API -->
 		<% @result.each do |school| %>
-			<a href="/info?schoolid=<%= school["school"]["schoolid"] %>"><%= school["school"]["schoolname"] %></a><br>
+			<!-- Creating a link for each school that will display more specific information -->
+			<!-- User can also submit message for specific school after the link -->
+			<a href="/info?schoolid=<%= school["school"]["schoolid"] %>&zip=<%= school["school"]["zip"]%>">
+				<%= school["school"]["schoolname"] %></a><br>
+				<!-- Calling the addToMap function which will add markers on the map for each school -->
 				<script>
 					$(function(){
 						addToMap(<%= school["school"]["latitude"] %>,<%= school["school"]["longitude"] %>)
 					})
 				</script>
 		<% end %><br>
-		<input type="button" value="Back" onclick="goBack()">
-	</div>
-	<div class="col-xs-4" id="recentmessage">
 		<h2>Recent Messages</h2>
+		<!-- Loop that runs through all the messages for the schools in the area code -->
 		<% @messages.each do |message| %>
 			<b><%= message["schoolname"] %></b><br><%= message["message"] %><br><br>
-		<% end %>
+		<% end %><br>
+		<input type="button" value="Back" class="btn btn-default btn-block" onclick="goBack()">
 	</div>
-</div><br><br>
-<div class="row">
-	<div class="col-xs-8 cold-xs-offset-2" id="map">
+	<div class="col-xs-9" id="mapresult">
+		<!-- Div to display the map, part of Leaflet instructions -->
+		<div id="map">
+		</div>
 	</div>
 </div>

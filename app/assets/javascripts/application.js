@@ -16,10 +16,12 @@
 
 "L.Icon.Default.imagePath = '/assets';"
 
+// Easy way to input a back button on webpage
 function goBack() {
 	window.history.back()
 }
 
+// Function allowing me to create a Leaflet map on my search page
 $( function() {
 	var map = L.map('map');
 	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {

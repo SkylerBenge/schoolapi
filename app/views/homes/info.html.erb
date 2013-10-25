@@ -1,6 +1,8 @@
 <div class="row">
+	<!-- Kyle wrote this to help me figure out my issues with Heroku -->
 	<% Rails.logger.info @info.inspect %>
 	<div class="col-xs-5" id="schoolinfo">
+		<!-- Displaying information about the specified school -->
 		<h3><%= @info[0]["school"]["schoolname"] %>, <%= @info[0]["school"]["gradesserved"] %></h3>
 		<h4>Basic Info</h4>
 		District: <%= @info[0]["school"]["schooldistrictname"] %><br>
@@ -10,18 +12,30 @@
 		Total Enrollment: <%= @info[0]["school"]["enrollment"]["total"] %><br>
 		Student to Teacher Ratio: <%= @info[0]["school"]["studentteacherratio"]["total"] %><br>
 		School Rating: <%= @info[0]["school"]["testrating_text"] %><br><br>
-		<input type="button" value="Back" onclick="goBack()">
+		<!-- Link that returns you to the schools in your zip code -->
+		<a href="/search?search_by=zip&search=<%= @zip %>">Back to Schools in Your Area</a>
 	</div>
 	<div class="col-xs-3" id="schoolmessageboard">
 		<h3>School Message Board</h3>
+		<!-- Looping through each message that belongs to the school -->
 		<% @messages.each do |message| %>
-			<%= message["theme"]%>: <a href="/comments/new?messageid=<%= message["id"]%>&message=<%= message["message"]%>"><%= message["message"] %></a><br>
+			<!-- Each message is a link so user can leave comments -->
+			<!-- Using the comments controller -->
+			<%= message["theme"]%>: <a href="/comments/new?messageid=<%= message["id"]%>
+									&message=<%= message["message"]%>&schoolid=
+									<%= @info[0]["school"]["schoolid"] %>">
+									<%= message["message"] %></a>--<a href="/messages/delete?messageid=<%= message["id"]%>">Delete</a>--<br>
+			<!-- Looping through all the comments that belongs to the message -->
 			<ul>
 				<% message.comments.each do |notes| %>
 						<li><%= notes.comment %></li>
 				<% end %>
 			</ul>
 		<% end %>
+		<!-- Link to create a new message for the school, passing to the message controller -->
+		<!-- Requiring parameters so message can be displayed at each school and zip code -->
 		<a href="/messages/new?schoolid=<%= @info[0]["school"]["schoolid"] %>&zip=<%= @info[0]["school"]["zip"] %>&schoolname=<%= @info[0]["school"]["schoolname"] %>">Add New Message</a>
+	</div>
+	<div class="col-xs-4" id="rightfiller">
 	</div>
 </div>

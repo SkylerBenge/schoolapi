@@ -8,9 +8,10 @@ Schoolapi::Application.routes.draw do
   # Routes for Messages
   get "/messages/new", to: "messages#new"
   get "/messages/create/:id/:zip/:schoolname", to: "messages#create"
-  # post "/messages/new", to: "messages#create"
+  get "/messages/delete", to: "messages#delete"
 
   # Routes for comments
   get "/comments/new", to: "comments#new"
-  get "/comments/create/:id", to: "comments#create"
+  get "/comments/create/:id/:schoolid", to: "comments#create"
+
 end

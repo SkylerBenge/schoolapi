@@ -1,13 +1,19 @@
-<div class="jumbotron">
-	<div class="container">
-		<h1 >SchoolME</h1>
-		<form method="get" action="/search">
-			<select name="search_by">
-				<option value ="zip">ZIP</option>
-				<!-- <option value ="city">City</option> -->
-			</select>
-			<input type="text" id="search" name="search">
-			<button class="btn btn-primary">Search</button>
-		</form>
+<body id="homepage">
+	<div class="jumbotron">
+		<div class="container">
+			<h1 >SchoolME</h1>
+			<!-- Passing this method to search -->
+			<form method="get" action="/search">
+				<select name="search_by">
+					<option value ="zip">ZIP</option>
+					<!-- Hoping to implement a City search down the road -->
+					<!-- Education API requires a State to be set with a City Search -->
+					<!-- Couldn't figure out how to pass the State value... -->
+					<!-- <option value ="city">City</option> -->
+				</select>
+				<input type="text" id="search" name="search">
+				<button class="btn btn-primary">Search</button>
+			</form>
+		</div>
 	</div>
-</div>
+</body>
