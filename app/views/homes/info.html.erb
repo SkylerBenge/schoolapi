@@ -1,4 +1,5 @@
 <div class="row">
+	<% Rails.logger.info @info.inspect %>
 	<div class="col-xs-5" id="schoolinfo">
 		<h3><%= @info[0]["school"]["schoolname"] %>, <%= @info[0]["school"]["gradesserved"] %></h3>
 		<h4>Basic Info</h4>
