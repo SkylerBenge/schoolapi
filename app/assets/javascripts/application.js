@@ -11,9 +11,10 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require twitter/bootstrap
 //= require jquery_ujs
 //= require_tree .
+
+"L.Icon.Default.imagePath = '/assets';"
 
 function goBack() {
 	window.history.back()
