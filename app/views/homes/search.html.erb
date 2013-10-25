@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="col-xs-4" id="searchresult">
+		<h2>Schools in <%= @search %></h2>
+		<% @result.each do |school| %>
+			<a href="/info?schoolid=<%= school["school"]["schoolid"] %>"><%= school["school"]["schoolname"] %></a><br>
+				<script>
+					$(function(){
+						addToMap(<%= school["school"]["latitude"] %>,<%= school["school"]["longitude"] %>)
+					})
+				</script>
+		<% end %><br>
+		<input type="button" value="Back" onclick="goBack()">
+	</div>
+	<div class="col-xs-4" id="recentmessage">
+		<h2>Recent Messages</h2>
+		<% @messages.each do |message| %>
+			<b><%= message["schoolname"] %></b><br><%= message["message"] %><br><br>
+		<% end %>
+	</div>
+</div><br><br>
+<div class="row">
+	<div class="col-xs-8 cold-xs-offset-2" id="map">
+	</div>
+</div>

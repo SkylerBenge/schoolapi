@@ -1,0 +1,19 @@
+
+<div class="row">
+	<div class="col-xs-4" id="newmessage">
+		<h3>New Message for <%= @schoolname %></h3>
+
+		<form method="get" action="/messages/create/<%= @schoolid %>/<%= @zip %>/<%= @schoolname %>">
+			Please select a theme: <select name="theme" class="form-control">
+				<option value="Classroom">Classroom Related</option>
+				<option value="Afterschool">Afterschool Study Related</option>
+				<option value="Hobbies">Hobbies Related</option>
+				<option value="Miscellaneous">Miscellaneous</option>
+			</select><br>
+			<textarea rows="10" cols="50" name="message" class="form-control" placeholder="Enter message here"></textarea><br>
+			<button class="btn btn-primary btn-block">Submit</button>
+		</form><br>
+
+		<input type="button" class="btn btn-default btn-block" value="Back" onclick="goBack()">
+	<div>
+</div>

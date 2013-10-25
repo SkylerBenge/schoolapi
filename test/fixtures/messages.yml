@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  schoolid: 1
+  theme: MyString
+  message: MyText
+
+two:
+  schoolid: 1
+  theme: MyString
+  message: MyText

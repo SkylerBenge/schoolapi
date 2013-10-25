@@ -1,0 +1,26 @@
+<div class="row">
+	<div class="col-xs-5" id="schoolinfo">
+		<h3><%= @info[0]["school"]["schoolname"] %>, <%= @info[0]["school"]["gradesserved"] %></h3>
+		<h4>Basic Info</h4>
+		District: <%= @info[0]["school"]["schooldistrictname"] %><br>
+		Address: <%= @info[0]["school"]["address"] %><br>
+		City: <%= @info[0]["school"]["city"] %>, <%= @info[0]["school"]["zip"] %><br>
+		<h3>School Statistics</h3>
+		Total Enrollment: <%= @info[0]["school"]["enrollment"]["total"] %><br>
+		Student to Teacher Ratio: <%= @info[0]["school"]["studentteacherratio"]["total"] %><br>
+		School Rating: <%= @info[0]["school"]["testrating_text"] %><br><br>
+		<input type="button" value="Back" onclick="goBack()">
+	</div>
+	<div class="col-xs-3" id="schoolmessageboard">
+		<h3>School Message Board</h3>
+		<% @messages.each do |message| %>
+			<%= message["theme"]%>: <a href="/comments/new?messageid=<%= message["id"]%>&message=<%= message["message"]%>"><%= message["message"] %></a><br>
+			<ul>
+				<% message.comments.each do |notes| %>
+						<li><%= notes.comment %></li>
+				<% end %>
+			</ul>
+		<% end %>
+		<a href="/messages/new?schoolid=<%= @info[0]["school"]["schoolid"] %>&zip=<%= @info[0]["school"]["zip"] %>&schoolname=<%= @info[0]["school"]["schoolname"] %>">Add New Message</a>
+	</div>
+</div>
